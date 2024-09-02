@@ -10,12 +10,14 @@ export default function ItemCart({
   itemPrice,
   handleIncremental,
   handleDecremental,
+  onQuantityChange,
 }: {
   itemname: string;
   itemImage: string;
   itemPrice: number;
   handleIncremental: (price: number) => void;
   handleDecremental: (price: number) => void;
+  onQuantityChange: (quantity: number) => void;
 }) {
   const [count, setCount] = React.useState(0);
   const [totalPrice, setTotalPrice] = React.useState(0);
@@ -26,6 +28,7 @@ export default function ItemCart({
     const newTotalPrice = newCount * itemPrice;
     setTotalPrice(newTotalPrice);
     handleIncremental(itemPrice);
+    onQuantityChange(newCount); 
   };
 
   const handleRemoveItemClick = () => {
@@ -35,6 +38,7 @@ export default function ItemCart({
       const newTotalPrice = newCount * itemPrice;
       setTotalPrice(newTotalPrice);
       handleDecremental(itemPrice);
+      onQuantityChange(newCount); 
     }
   };
 

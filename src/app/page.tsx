@@ -5,6 +5,7 @@ import ItemCart from "./item.cart";
 
 export default function Home() {
   const [total, setTotal] = React.useState(0);
+  const [totalItems, setTotalItems] = React.useState(0);
 
   const handleIncremental = (price: number) => {
     setTotal((prevTotal) => prevTotal + price);
@@ -12,6 +13,10 @@ export default function Home() {
 
   const handleDecremental = (price: number) => {
     setTotal((prevTotal) => prevTotal - price);
+  };
+
+  const handleQuantityChange = (quantity: number) => {
+    setTotalItems((prevTotalItems) => prevTotalItems + quantity);
   };
 
   const myItems = [
@@ -43,6 +48,7 @@ export default function Home() {
           itemPrice={item.price}
           handleIncremental={handleIncremental}
           handleDecremental={handleDecremental}
+          onQuantityChange={handleQuantityChange}
         />
       ))}
       <Box sx={{ 
@@ -54,6 +60,14 @@ export default function Home() {
         textAlign: 'right' 
       }}>
         <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-end">
+          <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+            Total Items:
+          </Typography>
+          <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
+            {totalItems}
+          </Typography>
+        </Stack>
+        <Stack direction="row" spacing={2} alignItems="center" justifyContent="flex-end" sx={{ mt: 1 }}>
           <Typography variant="h5" sx={{ fontWeight: 'bold' }}>
             Total:
           </Typography>
