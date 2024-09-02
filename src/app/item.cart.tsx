@@ -28,7 +28,7 @@ export default function ItemCart({
     const newTotalPrice = newCount * itemPrice;
     setTotalPrice(newTotalPrice);
     handleIncremental(itemPrice);
-    onQuantityChange(newCount); 
+    onQuantityChange(1); 
   };
 
   const handleRemoveItemClick = () => {
@@ -38,7 +38,7 @@ export default function ItemCart({
       const newTotalPrice = newCount * itemPrice;
       setTotalPrice(newTotalPrice);
       handleDecremental(itemPrice);
-      onQuantityChange(newCount); 
+      onQuantityChange(-1); 
     }
   };
 
